@@ -53,11 +53,6 @@ jobs:
           mkdir -p "src/main/java/$NEW_PATH"
           cp -r src/main/java/$OLD_PATH/* "src/main/java/$NEW_PATH/"
           rm -rf "src/main/java/org/nowstart/spring" # 기존 경로 삭제 (상위 패키지가 같을 경우 주의)
-          
-          # test 디렉토리 이동
-          mkdir -p "src/test/java/$NEW_PATH"
-          cp -r src/test/java/$OLD_PATH/* "src/test/java/$NEW_PATH/"
-          rm -rf "src/test/java/org/nowstart/spring"
 
       - name: Commit changes and Self-destruct
         run: |
