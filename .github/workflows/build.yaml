@@ -24,7 +24,7 @@ jobs:
     uses: now-start/workflow/.github/workflows/reusable-java-test.yaml@main
 
   rollback:
-    if: github.event.action == 'prereleased'
+    if: github.event_name == 'release'
     uses: now-start/workflow/.github/workflows/reusable-rollback.yaml@main
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
