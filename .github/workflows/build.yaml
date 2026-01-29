@@ -15,16 +15,16 @@ permissions:
 jobs:
   build-and-deploy:
     if: github.event_name == 'push'
-    uses: now-start/workflow/.github/workflows/reusable-java-build.yml@main
+    uses: now-start/workflow/.github/workflows/reusable-java-build.yaml@main
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
 
   test-only:
     if: github.event_name == 'pull_request'
-    uses: now-start/workflow/.github/workflows/reusable-java-test.yml@main
+    uses: now-start/workflow/.github/workflows/reusable-java-test.yaml@main
 
   rollback:
     if: github.event.action == 'prereleased'
-    uses: now-start/workflow/.github/workflows/reusable-rollback.yml@main
+    uses: now-start/workflow/.github/workflows/reusable-rollback.yaml@main
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}
