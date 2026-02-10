@@ -72,11 +72,9 @@ tasks.named('test') {
 
 bootBuildImage {
     buildpacks = [
-            "gcr.io/paketo-buildpacks/opentelemetry:latest",
-            "gcr.io/paketo-buildpacks/java:latest"
+            "docker.io/paketobuildpacks/opentelemetry",
+            "docker.io/paketobuildpacks/java"
     ]
 
-    environment = (environment ?: [:]) + [
-            "BP_OPENTELEMETRY_ENABLED": "true"
-    ]
+    environment.put("BP_OPENTELEMETRY_ENABLED", "true")
 }
