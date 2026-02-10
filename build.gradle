@@ -57,7 +57,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 }
 
 dependencyManagement {
@@ -69,4 +68,15 @@ dependencyManagement {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootBuildImage {
+    buildpacks = [
+            "gcr.io/paketo-buildpacks/opentelemetry:latest",
+            "gcr.io/paketo-buildpacks/java:latest"
+    ]
+
+    environment = (environment ?: [:]) + [
+            "BP_OPENTELEMETRY_ENABLED": "true"
+    ]
 }
