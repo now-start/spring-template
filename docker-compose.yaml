@@ -9,3 +9,15 @@ services:
       - "3100:3100"   # Loki
       - "9090:9090"   # Prometheus
       - "16686:16686" # Jaeger UI
+  app:
+    image: spring:0.0.0
+    ports:
+      - "8080:8080"
+    environment:
+      OTEL_JAVAAGENT_ENABLED: true
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-lgtm:4318
+      OTEL_TRACES_EXPORTER: otlp
+      OTEL_METRICS_EXPORTER: otlp
+      OTEL_LOGS_EXPORTER: otlp
+    depends_on:
+      - otel-lgtm
