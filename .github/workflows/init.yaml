@@ -34,6 +34,7 @@ jobs:
           # 2. 프로젝트 이름 수정
           sed -i "s/rootProject.name = 'spring'/rootProject.name = '$REPO_NAME'/g" settings.gradle
           sed -i "s/name: spring/name: $REPO_NAME/g" src/main/resources/application.yaml
+          sed -i "s/image: spring:0.0.0/image: $REPO_NAME:0.0.0/g" docker-compose.yaml
           
           # 3. Swagger 설정 수정
           sed -i "s/title(\"Spring Template\")/title(\"$REPO_NAME API\")/g" src/main/java/org/nowstart/spring/config/SwaggerConfig.java
