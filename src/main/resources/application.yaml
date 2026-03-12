@@ -50,3 +50,9 @@ management:
       enabled: false
     rabbit:
       enabled: false
+
+otel:
+  exporter:
+    otlp:
+      endpoint: http://otel-lgtm:4318
+
