@@ -30,7 +30,7 @@ repositories {
 
 ext {
     springDocVersion = "3.0.2"
-    opentelemetryVersion = "2.25.0"
+    opentelemetryVersion = "2.26.0"
     springCloudVersion = "2025.1.1"
 }
 
